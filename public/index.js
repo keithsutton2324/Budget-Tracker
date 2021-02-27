@@ -57,9 +57,6 @@ function populateChart() {
   // copy array and reverse it
   /*
   let reversed = transactions.slice().reverse();
-  */
- let reversed = 0;
- reversed = transactions.slice().reverse();
  let sum = 0;
 
   // create date labels for chart
@@ -93,6 +90,7 @@ function populateChart() {
       }]
     }
   });
+ */
 }
 
 function sendTransaction(isAdding) {
