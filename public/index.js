@@ -17,17 +17,9 @@ fetch("/api/transaction")
 function populateTotal() {
   // reduce transaction amounts to a single total value
   //console.log("---------------->transactions: ", transactions);
-  /*
-    // this fails in Heroku: "index.js:20 Uncaught (in promise)
-    // TypeError: transactions.reduce is not a function"
-    let total = transactions.reduce((total, t) => {
+  let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
-  */
-  let total = 0;
-  for (let i = 0; i < transactions.length; i++) {
-    total += parseInt(transactions[i].value);
-  }
 
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
@@ -37,10 +29,9 @@ function populateTable() {
   let tbody = document.querySelector("#tbody");
   tbody.innerHTML = "";
 
-  /*
-    // this fails in Heroku: "index.js:40 Uncaught (in promise)
-    // TypeError: transactions.forEach is not a function"
-    transactions.forEach(transaction => {
+  // this fails in Heroku: "index.js:40 Uncaught (in promise)
+  // TypeError: transactions.forEach is not a function"
+  transactions.forEach(transaction => {
     // create and populate a table row
     let tr = document.createElement("tr");
     tr.innerHTML = `
@@ -50,14 +41,12 @@ function populateTable() {
 
     tbody.appendChild(tr);
   });
-  */
 }
 
 function populateChart() {
   // copy array and reverse it
-  /*
   let reversed = transactions.slice().reverse();
- let sum = 0;
+  let sum = 0;
 
   // create date labels for chart
   let labels = reversed.map(t => {
@@ -90,7 +79,6 @@ function populateChart() {
       }]
     }
   });
- */
 }
 
 function sendTransaction(isAdding) {
