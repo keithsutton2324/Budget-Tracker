@@ -17,10 +17,18 @@ fetch("/api/transaction")
 function populateTotal() {
   // reduce transaction amounts to a single total value
   console.log("---------------->transactions: ", transactions);
+  /*
+    // this fails in Heroku: "index.js:20 Uncaught (in promise)
+    // TypeError: transactions.reduce is not a function"
     let total = transactions.reduce((total, t) => {
     return total + parseInt(t.value);
   }, 0);
-
+  */
+  let total = 0;
+  for (let i = 0; i<transactions.length; i++) {
+    total += parseInt(transactions[i].value);
+  }   
+  
   let totalEl = document.querySelector("#total");
   totalEl.textContent = total;
 }
