@@ -1,17 +1,4 @@
-// KJS
-/*
 let transactions = [];
-*/
-// create empty record
-let emptyTransaction = {
-  name: "",
-  value: 0,
-  date: Date.now
-};
-
-let transactions = [emptyTransaction];
-// KJS
-
 let myChart;
 
 fetch("/api/transaction")
